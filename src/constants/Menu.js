@@ -1,15 +1,51 @@
 import { SCHOOLICON } from "../assets/icons/menuIcon";
-export const MENU = [
+const MENU = [
   {
-    content: "School",
+    label: "Subjects",
     icon: SCHOOLICON,
+    path: "/subjects",
+    key: "subjects",
   },
   {
-    content: "School",
+    label: "Teachers",
     icon: SCHOOLICON,
+    path: "/teachers",
+    key: "teachers",
   },
   {
-    content: "School",
+    label: "Pupils",
     icon: SCHOOLICON,
+    path: "/pupils",
+    key: "pupils",
+  },
+  {
+    label: "Classes",
+    icon: SCHOOLICON,
+    path: "/classes",
+    key: "classes",
   },
 ];
+const ADMINSTRATORMENU = [
+  {
+    label: "Labs",
+    icon: SCHOOLICON,
+    path: "/labs",
+    key: "labs",
+  },
+  {
+    label: "Admins",
+    icon: SCHOOLICON,
+    path: "/admins",
+    key: "admins",
+  },
+  {
+    label: "Schools",
+    icon: SCHOOLICON,
+    path: "/schools",
+    key: "schools",
+  },
+];
+
+const APPCOLOR = "#1890ff";
+
+export { MENU, ADMINSTRATORMENU, APPCOLOR };

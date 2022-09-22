@@ -1,16 +1,30 @@
 import React from "react";
+import { Switch, Route, Redirect } from "react-router-dom";
 
 import "antd/dist/antd.css";
 import "./assets/styles/main.css";
 import "./assets/styles/responsive.css";
-import SideBar from "./components/SideBar";
 import Main from "./components/layout/Main";
+const demo = () => {
+  return <div>test</div>;
+};
 function App() {
   return (
     <div className="App">
-      <Main>
-        <div>tesst</div>
-      </Main>
+      <Switch>
+        {/* <Route path="/sign-up" exact component={SignUp} /> */}
+        {/* <Route path="/sign-in" exact component={SignIn} /> */}
+        <Main>
+          <Route exact path="/schools" component={demo} />
+          <Route exact path="/classes" component={demo} />
+          <Route exact path="/teachers" component={demo} />
+          <Route exact path="/subjects" component={demo} />
+          <Route exact path="/labs" component={demo} />
+          <Route exact path="/admins" component={demo} />
+          {/* <Route exact path="/profile" component={demo} /> */}
+          {/* <Redirect from="*" to="/dashboard" /> */}
+        </Main>
+      </Switch>
     </div>
   );
 }
