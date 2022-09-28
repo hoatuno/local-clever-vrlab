@@ -21,3 +21,12 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Jira snapshot test file
+jira.test.ts.snap
+
+# k8s env-local file
+public/configs/env-local.js
+
+# storybook build folder
+/storybook-static

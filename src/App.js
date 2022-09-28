@@ -5,7 +5,7 @@ import 'antd/dist/antd.css';
 import './assets/styles/main.css';
 import './assets/styles/responsive.css';
 import Main from './components/layout/Main';
-import Login from './components/login';
+import Login from './components/Login';
 const demo = () => {
   return <div>test</div>;
 };
