@@ -1,7 +1,7 @@
-import { Menu, Button } from "antd";
-import React from "react";
-import MenuItem from "./MenuItem";
-import { ADMINSTRATORMENU, MENU } from "../../constants/Menu";
+import { Menu } from 'antd';
+import React from 'react';
+import MenuItem from './MenuItem';
+import { ADMINSTRATORMENU, MENU } from '../../constants/Menu';
 
 const SideBar = () => {
   return (
@@ -12,28 +12,14 @@ const SideBar = () => {
       </div>
       <hr />
       <Menu theme="light" mode="inline">
-        {MENU.map((e) => {
-          return (
-            <MenuItem
-              key={e.key}
-              content={e.label}
-              icon={e.icon}
-              path={e.path}
-            />
-          );
+        {MENU.map(e => {
+          return <MenuItem key={e.key} content={e.label} icon={e.icon} path={e.path} />;
         })}
         <Menu.Item key="admin" className="menu-item-header">
           Adminstration
         </Menu.Item>
         {ADMINSTRATORMENU.map((e, idx) => {
-          return (
-            <MenuItem
-              key={e.key}
-              content={e.label}
-              icon={e.icon}
-              path={e.path}
-            />
-          );
+          return <MenuItem key={e.key} content={e.label} icon={e.icon} path={e.path} />;
         })}
       </Menu>
     </>

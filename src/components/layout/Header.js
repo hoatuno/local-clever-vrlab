@@ -1,9 +1,9 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
+import React from 'react';
+import { useLocation } from 'react-router-dom';
 import {
   Row,
-  Col,
-  Breadcrumb,
+  Col
+  // Breadcrumb,
   // Badge,
   // Dropdown,
   // Button,
@@ -13,10 +13,10 @@ import {
   // Drawer,
   // Typography,
   // Switch,
-} from "antd";
+} from 'antd';
 function Header() {
   let { pathname } = useLocation();
-  pathname = pathname.replace("/", "");
+  pathname = pathname.replace('/', '');
   return (
     <>
       <Row gutter={[24, 0]}>
@@ -27,10 +27,7 @@ function Header() {
             </Breadcrumb.Item>
           </Breadcrumb> */}
           <div className="ant-page-header-heading">
-            <span
-              className="ant-page-header-heading-title"
-              style={{ textTransform: "capitalize" }}
-            >
+            <span className="ant-page-header-heading-title" style={{ textTransform: 'capitalize' }}>
               {pathname}
             </span>
           </div>

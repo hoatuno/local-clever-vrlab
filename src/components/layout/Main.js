@@ -1,8 +1,7 @@
-import React from "react";
-import { useState } from "react";
-import { Layout, Drawer } from "antd";
-import SideBar from "../menu/SideBar";
-import Header from "./Header";
+import React from 'react';
+import { Layout, Drawer } from 'antd';
+import SideBar from '../menu/SideBar';
+import Header from './Header';
 
 const { Header: AntHeader, Content, Sider } = Layout;
 function Main({ children }) {
@@ -15,16 +14,14 @@ function Main({ children }) {
         open={false}
         key="right"
         width={250}
-        className="drawer-sidebar"
-      >
+        className="drawer-sidebar">
         <Layout className="layout-dashboard">
           <Sider
             trigger={null}
             width={250}
             theme="light"
             className="sider-primary ant-layout-sider-primary "
-            style={{ background: "transparent" }}
-          >
+            style={{ background: 'transparent' }}>
             <SideBar />
           </Sider>
         </Layout>
@@ -36,8 +33,7 @@ function Main({ children }) {
         width={250}
         theme="light"
         className="sider-primary ant-layout-sider-primary "
-        style={{ background: "transparent" }}
-      >
+        style={{ background: 'transparent' }}>
         <SideBar />
       </Sider>
       <Layout>
