@@ -1,5 +1,6 @@
 import React from 'react';
 import { Layout, Drawer } from 'antd';
+import { Outlet } from 'react-router-dom';
 import SideBar from '../menu/SideBar';
 import Header from './Header';
 
@@ -14,14 +15,16 @@ function Main({ children }) {
         open={false}
         key="right"
         width={250}
-        className="drawer-sidebar">
+        className="drawer-sidebar"
+      >
         <Layout className="layout-dashboard">
           <Sider
             trigger={null}
             width={250}
             theme="light"
             className="sider-primary ant-layout-sider-primary "
-            style={{ background: 'transparent' }}>
+            style={{ background: 'transparent' }}
+          >
             <SideBar />
           </Sider>
         </Layout>
@@ -33,14 +36,18 @@ function Main({ children }) {
         width={250}
         theme="light"
         className="sider-primary ant-layout-sider-primary "
-        style={{ background: 'transparent' }}>
+        style={{ background: 'transparent' }}
+      >
         <SideBar />
       </Sider>
       <Layout>
         <AntHeader className="ant-header-fixed">
           <Header />
         </AntHeader>
-        <Content className="content-ant">{children}</Content>
+        <Content className="content-ant">
+          {children}
+          <Outlet />
+        </Content>
         {/* <Footer /> */}
       </Layout>
     </Layout>
