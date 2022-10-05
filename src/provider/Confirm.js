@@ -1,17 +1,12 @@
-import React, {
-  useState,
-  useCallback,
-  Fragment,
-  useContext,
-} from "react";
-import ConfirmModal from "../components/ConfirmModal";
-import ConfirmContext from "./ConfirmContext";
+import React, { useState, useCallback, Fragment, useContext } from 'react';
+import ConfirmModal from '../components/modal/ConfirmModal';
+import ConfirmContext from './ConfirmContext';
 
 const DEFAULT_OPTIONS = {
-  title: "Are you sure?",
-  description: "",
-  confirmationText: "Ok",
-  cancellationText: "Cancel",
+  title: 'Are you sure?',
+  description: '',
+  confirmationText: 'Ok',
+  cancellationText: 'Cancel',
 };
 
 const buildOptions = (defaultOptions, options) => {

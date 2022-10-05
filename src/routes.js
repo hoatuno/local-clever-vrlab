@@ -5,6 +5,7 @@ import Context from './context';
 import Main from './components/layout/Main';
 // pages
 import Login from './pages/Login';
+import Schools from './pages/Schools';
 // ----------------------------------------------------------------------
 
 const Demo = () => {
@@ -30,7 +31,7 @@ export default function Router() {
         { path: 'classes', element: <Demo /> },
         { path: 'labs', element: <Demo /> },
         { path: 'admins', element: <Demo /> },
-        { path: 'schools', element: <Demo /> },
+        { path: 'schools', element: <Schools /> },
       ],
     },
     {
