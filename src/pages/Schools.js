@@ -1,9 +1,11 @@
 import { Col, Row } from 'antd';
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
+import { apiGetSchools } from '../apis';
 import SchoolModal from '../components/modal/SchoolModal';
 import { SchoolCard } from '../components/SchoolCard';
+import Context from '../context';
 
-const schools = [
+const mockSchools = [
   { idSchool: 'NH1', name: 'Nguyen Hue', description: 'School of Nguyen Hue' },
   { idSchool: 'NH1', name: 'Nguyen Hue', description: 'School of Nguyen Hue' },
   { idSchool: 'NH1', name: 'Nguyen Hue', description: 'School of Nguyen Hue' },
@@ -14,12 +16,19 @@ const schools = [
     description: 'School of Nguyen Tat Thanh',
   },
 ];
-// {
-//   idSchool, name, description;
-// }
 const Schools = () => {
+  const { updateContext } = useContext(Context);
+
   const [showModal, setShowModal] = React.useState(false);
+  const [schools, setSchools] = React.useState(mockSchools);
   const [chosenSchool, setChosenSchool] = React.useState(null);
+
+  const doInit = () => {
+    updateContext({ idSchool: null, schoolName: null });
+    apiGetSchools().then((shs) => {
+      if (shs) setSchools(shs.rows);
+    });
+  };
   const onPress = (idSchool) => {
     console.log({ idSchool });
   };
@@ -27,6 +36,8 @@ const Schools = () => {
     setShowModal(true);
     setChosenSchool(school);
   };
+
+  useEffect(doInit, []);
   return (
     <div className="layout-content">
       <Row className="rowgap-vbox" gutter={[24, 0]}>
@@ -41,7 +52,7 @@ const Schools = () => {
             className="mb-24"
             onClick={() => onPress(e.idSchool)}
           >
-            <SchoolCard school={e} setShowModal={handleEdit} />
+            <SchoolCard school={e} setShowModal={handleEdit} doInit={doInit} />
           </Col>
         ))}
       </Row>
