@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Layout, Drawer } from 'antd';
 import { Outlet } from 'react-router-dom';
 import SideBar from '../menu/SideBar';
@@ -6,6 +6,9 @@ import Header from './Header';
 
 const { Header: AntHeader, Content, Sider } = Layout;
 function Main({ children }) {
+  const [visible, setVisible] = useState(false);
+
+  const openDrawer = () => setVisible(!visible);
   return (
     <Layout className="layout-dashboard">
       <Drawer
@@ -13,6 +16,8 @@ function Main({ children }) {
         placement="left"
         closable={false}
         open={false}
+        onClose={() => setVisible(false)}
+        visible={visible}
         key="right"
         width={250}
         className="drawer-sidebar"
@@ -42,7 +47,7 @@ function Main({ children }) {
       </Sider>
       <Layout>
         <AntHeader className="ant-header-fixed">
-          <Header />
+          <Header onPress={openDrawer} />
         </AntHeader>
         <Content className="content-ant">
           {children}

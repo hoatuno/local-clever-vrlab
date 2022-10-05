@@ -6,6 +6,7 @@ import Context from './context';
 
 import 'antd/dist/antd.css';
 import './assets/styles/main.css';
+import './assets/styles/styles.css';
 import './assets/styles/responsive.css';
 
 import { ConfirmProvider } from './provider/Confirm';
