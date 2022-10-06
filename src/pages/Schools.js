@@ -6,12 +6,12 @@ import { SchoolCard } from '../components/SchoolCard';
 import Context from '../context';
 
 const mockSchools = [
-  { idSchool: 'NH1', name: 'Nguyen Hue', description: 'School of Nguyen Hue' },
-  { idSchool: 'NH1', name: 'Nguyen Hue', description: 'School of Nguyen Hue' },
-  { idSchool: 'NH1', name: 'Nguyen Hue', description: 'School of Nguyen Hue' },
-  { idSchool: 'NH1', name: 'Nguyen Hue', description: 'School of Nguyen Hue' },
+  { id: 'NH1', name: 'Nguyen Hue', description: 'School of Nguyen Hue' },
+  { id: 'NH1', name: 'Nguyen Hue', description: 'School of Nguyen Hue' },
+  { id: 'NH1', name: 'Nguyen Hue', description: 'School of Nguyen Hue' },
+  { id: 'NH1', name: 'Nguyen Hue', description: 'School of Nguyen Hue' },
   {
-    idSchool: 'NTT2',
+    id: 'NTT2',
     name: 'Nguyen Tat Thanh',
     description: 'School of Nguyen Tat Thanh',
   },
@@ -24,13 +24,13 @@ const Schools = () => {
   const [chosenSchool, setChosenSchool] = React.useState(null);
 
   const doInit = () => {
-    updateContext({ idSchool: null, schoolName: null });
+    updateContext({ id: null, schoolName: null });
     apiGetSchools().then((shs) => {
       if (shs) setSchools(shs.rows);
     });
   };
-  const onPress = (idSchool) => {
-    console.log({ idSchool });
+  const onPress = (id) => {
+    console.log({ id });
   };
   const handleEdit = (school) => {
     setShowModal(true);
@@ -50,7 +50,7 @@ const Schools = () => {
             lg={12}
             xl={8}
             className="mb-24"
-            onClick={() => onPress(e.idSchool)}
+            onClick={() => onPress(e.id)}
           >
             <SchoolCard school={e} setShowModal={handleEdit} doInit={doInit} />
           </Col>
@@ -60,6 +60,7 @@ const Schools = () => {
         open={showModal}
         school={chosenSchool}
         close={() => setShowModal(false)}
+        doInit={doInit}
       />
     </div>
   );

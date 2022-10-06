@@ -1,8 +1,9 @@
 import React from 'react';
 import { Modal, Form, Input } from 'antd';
 import { useEffect } from 'react';
+import { apiEditSchool, apiNewSchool } from '../../apis';
 // import { useIntl } from 'react-intl';
-const SchoolModal = ({ open, school, close }) => {
+const SchoolModal = ({ open, school, close, doInit }) => {
   // const { formatMessage: tr } = useIntl();
   const [form] = Form.useForm();
   useEffect(() => {
@@ -10,19 +11,26 @@ const SchoolModal = ({ open, school, close }) => {
     form.setFieldValue('description', (school || {}).description);
   }, [school]);
   const onSave = () => {
-    form
-      .validateFields()
-      .then((values) => {
-        console.log({ values });
-        close();
-      })
-      .catch((err) => {
-        console.log({ err });
-      });
+    try {
+      form
+        .validateFields()
+        .then(async (values) => {
+          const { name, description } = values;
+          const newSchool = { id: school.id, name, description };
+          if (school.id) await apiEditSchool(school.id, newSchool);
+          else await apiNewSchool(newSchool);
+          await doInit();
+        })
+    } catch (error) {
+      console.log(error);
+    }
+    finally {
+      close();
+    }
   };
   return (
     <Modal
-      title={(school || {}).idSchool ? 'Edit School' : 'Create School'}
+      title={(school || {}).id ? 'Edit School' : 'Create School'}
       open={open}
       onClose={close}
       onOk={onSave}
