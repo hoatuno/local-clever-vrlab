@@ -1,7 +1,7 @@
 import { Menu } from 'antd';
 import React from 'react';
 import MenuItem from './MenuItem';
-import { ADMINSTRATORMENU, MENU } from '../../constants/Menu';
+import { ADMINSTRATORMENU, MENU } from '../../constants';
 
 const SideBar = () => {
   return (

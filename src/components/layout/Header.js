@@ -35,13 +35,19 @@ const Header = ({ onPress }) => {
   let { pathname } = useLocation();
   pathname = pathname.replace('/', '');
 
+  const onClick = (e) => {
+    if(e.key==='3'){
+      updateContext({ token: null });
+      
+    }
+  };
   const menu = (
     <Menu
+      onClick={onClick}
       items={[
         getItem('My Profile', '1', <SkinFilled />),
         getItem('Change password', '2', <ToolFilled />),
-        getItem(
-          <span onClick={() => updateContext({ token: null })}>Log out</span>,
+        getItem('Log out',
           '3',
           <LogoutOutlined />
         ),

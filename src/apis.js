@@ -3,7 +3,7 @@ import { useConfirm } from './provider/Confirm.js';
 import axios from 'axios';
 import queryString from 'query-string';
 
-const PREFIX = '/api/v1';
+const PREFIX = 'http://192.168.1.6:3000/api/v1';
 //const PREFIX = "https://api-dev.clevertech.edu.vn/api/v1";
 const SCHOOLS_URL = PREFIX + '/schools';
 const CLASSES_URL = PREFIX + '/classes';

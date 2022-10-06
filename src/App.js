@@ -29,8 +29,8 @@ const App = () => {
         setUsername(username);
       }
     }
+    console.log(token);
   }, [token]);
-
   return (
     <div className="App">
       <Context.Provider

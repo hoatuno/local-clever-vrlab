@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { Layout, Form, Input, Button, Row, Col, Typography } from 'antd';
 import Context from '../context';
 import { apiLogin } from '../apis.js';
@@ -15,7 +15,6 @@ const Login = () => {
   const [form] = Form.useForm();
   form.setFieldsValue(initialValues);
   const contextObj = useContext(Context);
-  const navigate = useNavigate();
   const onFinish = async values => {
     const rs = await apiLogin(values.email, values.password);
     if (rs) {
@@ -33,21 +32,12 @@ const Login = () => {
             : 'viewer',
       });
     }
-    setTimeout(() => navigate('/'), 300);
   };
   const onFinishFailed = errorInfo => {
     console.log('Failed:', errorInfo);
   };
-
-  const path = useLocation();
-  if (!contextObj.token && !localStorage.getItem('token')) {
-    if (path !== '/login') {
-      setTimeout(() => navigate('/login'), 300);
-    }
-  } else {
-    if (path === '/login') {
-      setTimeout(() => navigate('/'), 300);
-    }
+  if (contextObj.token) {
+    return <Navigate to="/schools" />;
   }
 
   return (

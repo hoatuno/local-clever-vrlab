@@ -15,7 +15,7 @@ const Demo = () => {
 export default function Router() {
   const { token } = useContext(Context);
 
-  let isLoggedIn = true;
+  let isLoggedIn = false;
   if (token) {
     isLoggedIn = true;
   }
@@ -24,7 +24,7 @@ export default function Router() {
       path: '/',
       element: isLoggedIn ? <Main /> : <Navigate to="/login" />,
       children: [
-        // { element: <Navigate to="/Subjects" replace /> },
+        { element: <Navigate to="/schools" replace /> },
         { path: 'subjects', element: <Demo /> },
         { path: 'teachers', element: <Demo /> },
         { path: 'pupils', element: <Demo /> },
@@ -36,14 +36,15 @@ export default function Router() {
     },
     {
       path: '/',
-      // element: <LogoOnlyLayout />,
+      element: <Login />,
       children: [
-        {
-          path: 'login',
-          element: isLoggedIn ? <Navigate to="/Subjects" replace /> : <Login />,
-        },
-        { path: '/', element: <Navigate to="/login" /> },
-      ],
+        { path: 'login', element: <Login /> },
+      ]
     },
+    {
+      path: '*',
+      element: !isLoggedIn && <Navigate to="/login" />,
+    }
+
   ]);
 }
